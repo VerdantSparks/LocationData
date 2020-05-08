@@ -6,8 +6,8 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <PackageId>verdantsparks.locationData</PackageId>
-    <Version>1.0.1</Version>
+    <PackageId>Verdantsparks.LocationData</PackageId>
+    <Version>1.0.2</Version>
     <Authors>Ferry To</Authors>
     <Company>VerdantSparks</Company>
     <PackageDescription>Define types for storing location data that can be used in proximity queries.</PackageDescription>

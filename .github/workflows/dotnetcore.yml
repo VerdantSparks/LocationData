@@ -2,9 +2,8 @@ name: .NET Core
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    paths:
+      - '*.csproj'
 
 jobs:
   build:
@@ -12,7 +11,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      
+
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
@@ -23,16 +22,16 @@ jobs:
 
     - name: Install dependencies
       run: dotnet restore
-      
+
     - name: Build
       run: dotnet build --configuration Release --no-restore
-      
+
     - name: Test
       run: dotnet test --no-restore --verbosity normal
-      
+
     - name: Pack
       run: dotnet pack --configuration Release --no-restore
-      
+
     - name: Publish
-      run: dotnet nuget push "bin/Release/*.nupkg"
+      run: dotnet nuget push "bin/Release/*.nupkg" --skip-duplicate
 
