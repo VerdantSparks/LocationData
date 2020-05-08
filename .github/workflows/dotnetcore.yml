@@ -26,4 +26,5 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
     - name: Pack
       run: dotnet pack --configuration Release --no-restore
-    - name: dotnet nuget push "bin/Release/verdantsparks.locationData.*.nupkg" --source "github"
+    - name: Publish
+      run: dotnet nuget push "bin/Release/verdantsparks.locationData.*.nupkg" --source "github"
