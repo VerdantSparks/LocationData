@@ -29,15 +29,6 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release --no-restore
       
-    - name: Setup Nuget.exe
-      uses: warrenbuckley/Setup-Nuget@v1
-
-    - name: Add Nuget GPR Source
-      run: nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/VerdantSparks/index.json"
-    
-    - name: Setup Nuget API Key
-      run: nuget setApiKey ${{ secrets.GITHUB_TOKEN }} -Source "GitHub"
-      
     - name: Publish
-      run: dotnet nuget push "bin/Release/verdantsparks.locationData.*.nupkg" --source "GitHub"
+      run: dotnet nuget push "bin/Release/verdantsparks.locationData.*.nupkg" --source "https://nuget.pkg.github.com/VerdantSparks/index.json" -k ${{ secrets.GITHUB_TOKEN }}
 
