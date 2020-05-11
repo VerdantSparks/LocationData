@@ -1,20 +1,21 @@
-﻿using Microsoft.Azure.Cosmos.Spatial;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
 namespace LocationData
 {
-    public interface IPlace
+    public abstract class Place
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
         [JsonProperty("id")]
-        string Id { get; set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
-        string Name { get; set; }
+        public string Name { get; set; }
 
         [JsonProperty("address")]
-        string Address { get; set; }
-
-        [JsonProperty("location")]
-        Point Location { get; set; }
+        public string Address { get; set; }
     }
 }
+
