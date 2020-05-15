@@ -1,3 +1,4 @@
+using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver.GeoJsonObjectModel;
 using Newtonsoft.Json;
 
@@ -5,13 +6,17 @@ namespace LocationData.MongoDb
 {
     public class Place : LocationData.Place
     {
-        [JsonProperty("location")]
-        public GeoJsonPoint<GeoJson2DGeographicCoordinates> Location { get; set; }
-    }
+        [BsonIgnore]
+        public override GeoPoint Location
+        {
+            get => new GeoPoint(BackingLocation.Coordinates.Longitude,
+                                BackingLocation.Coordinates.Latitude);
+            set =>
+                BackingLocation = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
+                    new GeoJson2DGeographicCoordinates(value.Longitude, value.Latitude));
+        }
 
-    public class ProximityQueryResult : Place
-    {
-        [JsonProperty("distance")]
-        public double Distance { get; set; }
+        [JsonProperty("location")]
+        public GeoJsonPoint<GeoJson2DGeographicCoordinates> BackingLocation { get; set; }
     }
 }

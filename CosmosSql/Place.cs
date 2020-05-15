@@ -1,17 +1,20 @@
 using Microsoft.Azure.Cosmos.Spatial;
+using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
 namespace LocationData.CosmosSql
 {
     public class Place : LocationData.Place
     {
-        [JsonProperty("location")]
-        public Point Location { get; set; }
-    }
+        [BsonIgnore]
+        public override GeoPoint Location
+        {
+            get => new GeoPoint(BackingLocation.Position.Longitude, BackingLocation.Position.Latitude);
+            set => BackingLocation = new Point(value.Longitude, value.Latitude);
+        }
 
-    public class ProximityQueryResult : Place
-    {
-        [JsonProperty("distance")]
-        public double Distance { get; set; }
+
+        [JsonProperty("location")]
+        protected Point BackingLocation { get; set; }
     }
 }
