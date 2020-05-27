@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace LocationData.CosmosSql
 {
-    public class Place : LocationData.Place
+    public abstract class Place : LocationData.Place
     {
         [BsonIgnore]
         public override GeoPoint Location
