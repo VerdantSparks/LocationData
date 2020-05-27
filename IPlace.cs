@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace LocationData
+﻿namespace LocationData
 {
     public interface IPlace
     {
