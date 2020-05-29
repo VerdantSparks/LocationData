@@ -1,4 +1,6 @@
-﻿namespace LocationData
+﻿using LocationData.Google;
+
+namespace LocationData
 {
     public interface IPlace
     {
@@ -8,7 +10,7 @@
         string GooglePlaceId { get; set; }
         string City { get; set; }
         string Description { get; set; }
-        GeoPoint Location { get; set; }
+        Location Location { get; set; }
     }
 }
 

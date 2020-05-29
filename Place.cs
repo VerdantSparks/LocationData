@@ -1,3 +1,4 @@
+using LocationData.Google;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
@@ -20,6 +21,6 @@ namespace LocationData {
         public string City { get; set; }
         public string Description { get; set; }
 
-        public virtual GeoPoint Location { get; set; }
+        public virtual Location Location { get; set; }
     }
 }
