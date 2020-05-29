@@ -3,7 +3,8 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
-namespace LocationData {
+namespace LocationData
+{
     public abstract class Place : IPlace
     {
         [BsonId]

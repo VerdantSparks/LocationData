@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 
-namespace LocationData.CosmosSql {
+namespace LocationData.CosmosSql
+{
     public class ProximityQueryResult : Place, IProximityQueryResult
     {
         [JsonProperty("distance")]

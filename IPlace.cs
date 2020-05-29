@@ -13,4 +13,3 @@ namespace LocationData
         Location Location { get; set; }
     }
 }
-

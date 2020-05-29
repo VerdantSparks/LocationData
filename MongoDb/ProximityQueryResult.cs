@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 
-namespace LocationData.MongoDb {
+namespace LocationData.MongoDb
+{
     public class ProximityQueryResult : Place, IProximityQueryResult
     {
         [JsonProperty("distance")]

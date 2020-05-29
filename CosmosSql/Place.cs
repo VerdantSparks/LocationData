@@ -14,7 +14,6 @@ namespace LocationData.CosmosSql
             set => BackingLocation = new Point(value.Longitude, value.Latitude);
         }
 
-
         [JsonProperty("location")]
         protected Point BackingLocation { get; set; }
     }
