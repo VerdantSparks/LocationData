@@ -1,3 +1,4 @@
+using LocationData.Google;
 using Microsoft.Azure.Cosmos.Spatial;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
@@ -7,9 +8,9 @@ namespace LocationData.CosmosSql
     public abstract class Place : LocationData.Place
     {
         [BsonIgnore]
-        public override GeoPoint Location
+        public override Location Location
         {
-            get => new GeoPoint(BackingLocation.Position.Longitude, BackingLocation.Position.Latitude);
+            get => new Location(BackingLocation.Position.Longitude, BackingLocation.Position.Latitude);
             set => BackingLocation = new Point(value.Longitude, value.Latitude);
         }
 

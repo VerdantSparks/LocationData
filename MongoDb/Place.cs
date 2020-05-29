@@ -1,3 +1,4 @@
+using LocationData.Google;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver.GeoJsonObjectModel;
 using Newtonsoft.Json;
@@ -7,9 +8,9 @@ namespace LocationData.MongoDb
     public abstract class Place : LocationData.Place
     {
         [BsonIgnore]
-        public override GeoPoint Location
+        public override Location Location
         {
-            get => new GeoPoint(BackingLocation.Coordinates.Longitude,
+            get => new Location(BackingLocation.Coordinates.Longitude,
                                 BackingLocation.Coordinates.Latitude);
             set =>
                 BackingLocation = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(

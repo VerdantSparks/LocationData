@@ -21,5 +21,11 @@ namespace LocationData.Google
 
         [JsonProperty("longitude")]
         public double Longitude { get; set; }
+
+        public Location(double lon, double lat)
+        {
+            Longitude = lon;
+            Latitude = lat;
+        }
     }
 }
