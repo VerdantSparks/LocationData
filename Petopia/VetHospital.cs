@@ -1,6 +1,6 @@
 namespace LocationData.Petopia
 {
-    public class VetHospital : Place
+    public class VetHospital : MongoDb.Place
     {
         public string Doctor { get; set; }
         public string Phone { get; set; }
