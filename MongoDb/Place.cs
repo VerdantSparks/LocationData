@@ -16,7 +16,7 @@ namespace LocationData.MongoDb
                     new GeoJson2DGeographicCoordinates(value.Longitude, value.Latitude));
         }
 
-        [JsonProperty("location")]
+        [JsonProperty("Location")]
         public GeoJsonPoint<GeoJson2DGeographicCoordinates> BackingLocation { get; set; }
     }
 }
