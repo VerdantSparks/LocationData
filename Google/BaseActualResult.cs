@@ -5,14 +5,8 @@ namespace LocationData.Google
 {
     public class BaseActualResult
     {
-        [JsonProperty("address_components")]
-        public AddressComponent[] AddressComponents { get; set; }
-
-        [JsonProperty("formatted_address")]
-        public string FormattedAddress { get; set; }
-
         [JsonProperty("geometry")]
-        public Geocoding.Geometry Geometry { get; set; }
+        public Geometry Geometry { get; set; }
 
         [JsonProperty("place_id")]
         public string PlaceId { get; set; }
