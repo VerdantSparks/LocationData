@@ -1,4 +1,3 @@
-using LocationData.Google;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
@@ -18,10 +17,10 @@ namespace LocationData
         [JsonProperty("address")]
         public string Address { get; set; }
 
-        public string GooglePlaceId { get; set; }
+        [JsonProperty("city")]
         public string City { get; set; }
-        public string Description { get; set; }
 
-        public virtual Location Location { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 }
