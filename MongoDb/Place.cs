@@ -16,13 +16,13 @@ namespace LocationData.MongoDb
             {
                 var lon = value.Longitude;
                 var lat = value.Latitude;
+
                 var loc = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
                     new GeoJson2DGeographicCoordinates(lon, lat));
 
                 Location = loc;
             }
         }
-
 
         [JsonProperty("location")]
         public override GeoJsonPoint<GeoJson2DGeographicCoordinates> Location { get; set; }
