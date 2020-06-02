@@ -1,3 +1,4 @@
+using LocationData.CosmosSql;
 using LocationData.Google;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver.GeoJsonObjectModel;
@@ -5,18 +6,25 @@ using Newtonsoft.Json;
 
 namespace LocationData.MongoDb
 {
-    public abstract class Place : LocationData.Place
+    public abstract class Place : Place<GeoJsonPoint<GeoJson2DGeographicCoordinates>>, IGoogleLocation
     {
         [BsonIgnore]
-        public override Location Location
+        public Location GoogleLocation
         {
-            get => new Location(BackingLocation.Coordinates.Longitude, BackingLocation.Coordinates.Latitude);
-            set =>
-                BackingLocation = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
-                    new GeoJson2DGeographicCoordinates(value.Longitude, value.Latitude));
+            get => new Location(Location.Coordinates.Longitude, Location.Coordinates.Latitude);
+            set
+            {
+                var lon = value.Longitude;
+                var lat = value.Latitude;
+                var loc = new GeoJsonPoint<GeoJson2DGeographicCoordinates>(
+                    new GeoJson2DGeographicCoordinates(lon, lat));
+
+                Location = loc;
+            }
         }
 
-        [JsonProperty("Location")]
-        public GeoJsonPoint<GeoJson2DGeographicCoordinates> BackingLocation { get; set; }
+
+        [JsonProperty("location")]
+        public override GeoJsonPoint<GeoJson2DGeographicCoordinates> Location { get; set; }
     }
 }

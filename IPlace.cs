@@ -2,7 +2,7 @@
 
 namespace LocationData
 {
-    public interface IPlace
+    public interface IPlace<T>
     {
         string Id { get; set; }
         string Name { get; set; }
@@ -10,6 +10,6 @@ namespace LocationData
         string GooglePlaceId { get; set; }
         string City { get; set; }
         string Description { get; set; }
-        Location Location { get; set; }
+        T Location { get; set; }
     }
 }
