@@ -1,7 +1,7 @@
 namespace LocationData
 {
-    public interface IPlaceConverter<in T>
+    public interface IPlaceConverter<T, in T2>
     {
-        IPlace Convert(T input);
+        IPlace<T> Convert(T2 input);
     }
 }

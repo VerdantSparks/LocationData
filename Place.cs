@@ -1,11 +1,10 @@
-using LocationData.Google;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using Newtonsoft.Json;
 
 namespace LocationData
 {
-    public abstract class Place : IPlace
+    public abstract class Place<T> : IPlace<T>
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -22,6 +21,6 @@ namespace LocationData
         public string City { get; set; }
         public string Description { get; set; }
 
-        public virtual Location Location { get; set; }
+        public abstract T Location { get; set; }
     }
 }

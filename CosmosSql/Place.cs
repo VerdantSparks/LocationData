@@ -5,16 +5,16 @@ using Newtonsoft.Json;
 
 namespace LocationData.CosmosSql
 {
-    public abstract class Place : LocationData.Place
+    public abstract class Place : Place<Point>, IGoogleLocation
     {
         [BsonIgnore]
-        public override Location Location
+        public Location GoogleLocation
         {
-            get => new Location(BackingLocation.Position.Longitude, BackingLocation.Position.Latitude);
-            set => BackingLocation = new Point(value.Longitude, value.Latitude);
+            get => new Location(Location.Position.Longitude, Location.Position.Latitude);
+            set => Location = new Point(value.Longitude, value.Latitude);
         }
 
         [JsonProperty("location")]
-        protected Point BackingLocation { get; set; }
+        public override Point Location { get; set; }
     }
 }
