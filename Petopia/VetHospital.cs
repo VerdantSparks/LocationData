@@ -13,10 +13,4 @@ namespace LocationData.Petopia
         [JsonProperty("license_number")]
         public string LicenseNumber { get; set; }
     }
-
-    public class VetHospital<T> : VetHospital, IVendorSpecificLocationImpl<T>
-    {
-        [JsonProperty("location")]
-        public T Location { get; set; }
-    }
 }
