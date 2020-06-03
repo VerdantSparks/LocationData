@@ -1,15 +1,13 @@
-using LocationData.CosmosSql;
 using LocationData.Google;
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver.GeoJsonObjectModel;
-using Newtonsoft.Json;
 
-namespace LocationData.MongoDb
+namespace LocationData.Petopia
 {
-    public abstract class Place : Place<GeoJsonPoint<GeoJson2DGeographicCoordinates>>, IGoogleLocation
+    public class GoogleMongoVetHospital : GoogleVetHospital<GeoJsonPoint<GeoJson2DGeographicCoordinates>>
     {
         [BsonIgnore]
-        public Location GoogleLocation
+        public override Location GoogleLocation
         {
             get => new Location(Location.Coordinates.Longitude, Location.Coordinates.Latitude);
             set
@@ -23,8 +21,5 @@ namespace LocationData.MongoDb
                 Location = loc;
             }
         }
-
-        [JsonProperty("location")]
-        public override GeoJsonPoint<GeoJson2DGeographicCoordinates> Location { get; set; }
     }
 }

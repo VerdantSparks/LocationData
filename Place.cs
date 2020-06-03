@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 
 namespace LocationData
 {
-    public abstract class Place<T> : IPlace<T>
+    public abstract class Place : IPlace
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -17,10 +17,10 @@ namespace LocationData
         [JsonProperty("address")]
         public string Address { get; set; }
 
-        public string GooglePlaceId { get; set; }
+        [JsonProperty("city")]
         public string City { get; set; }
-        public string Description { get; set; }
 
-        public abstract T Location { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 }

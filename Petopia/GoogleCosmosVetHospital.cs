@@ -1,20 +1,16 @@
 using LocationData.Google;
 using Microsoft.Azure.Cosmos.Spatial;
 using MongoDB.Bson.Serialization.Attributes;
-using Newtonsoft.Json;
 
-namespace LocationData.CosmosSql
+namespace LocationData.Petopia
 {
-    public abstract class Place : Place<Point>, IGoogleLocation
+    public class GoogleCosmosVetHospital : GoogleVetHospital<Point>
     {
         [BsonIgnore]
-        public Location GoogleLocation
+        public override Location GoogleLocation
         {
             get => new Location(Location.Position.Longitude, Location.Position.Latitude);
             set => Location = new Point(value.Longitude, value.Latitude);
         }
-
-        [JsonProperty("location")]
-        public override Point Location { get; set; }
     }
 }

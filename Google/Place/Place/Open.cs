@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace LocationData.Google.Place
+namespace LocationData.Google.Place.Place
 {
     public class Open
     {
