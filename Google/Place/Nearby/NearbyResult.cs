@@ -1,5 +1,3 @@
-using System;
-using LocationData.Google.Place.Place;
 using Newtonsoft.Json;
 
 namespace LocationData.Google.Place.Nearby
